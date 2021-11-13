@@ -1,6 +1,6 @@
 from enum import Enum
 from string import punctuation
-from typing import Set
+from typing import List
 
 
 class Weaknesses(Enum):
@@ -11,8 +11,8 @@ class Weaknesses(Enum):
     NO_SYMBOLS = 'No symbols'
 
 
-def find_weaknesses(password: str) -> Set[Weaknesses]:
-    weaknesses = set()
+def find_weaknesses(password: str) -> List[Weaknesses]:
+    weaknesses = []
 
     lowercase_letter_found = False
     uppercase_letter_found = False
@@ -20,25 +20,25 @@ def find_weaknesses(password: str) -> Set[Weaknesses]:
     symbol_found = False
 
     if len(password) < 8:
-        weaknesses.add(Weaknesses.LESS_THAN_8_CHARS)
+        weaknesses.append(Weaknesses.LESS_THAN_8_CHARS)
 
     for letter in password:
         if letter.islower():
             lowercase_letter_found = True
-        if letter.isupper():
+        elif letter.isupper():
             uppercase_letter_found = True
-        if letter.isnumeric():
+        elif letter.isnumeric():
             number_found = True
-        if letter in punctuation:
+        elif letter in punctuation:
             symbol_found = True
 
     if not lowercase_letter_found:
-        weaknesses.add(Weaknesses.NO_LOWERCASE_LETTERS)
+        weaknesses.append(Weaknesses.NO_LOWERCASE_LETTERS)
     if not uppercase_letter_found:
-        weaknesses.add(Weaknesses.NO_UPPERCASE_LETTERS)
+        weaknesses.append(Weaknesses.NO_UPPERCASE_LETTERS)
     if not number_found:
-        weaknesses.add(Weaknesses.NO_NUMBERS)
+        weaknesses.append(Weaknesses.NO_NUMBERS)
     if not symbol_found:
-        weaknesses.add(Weaknesses.NO_SYMBOLS)
+        weaknesses.append(Weaknesses.NO_SYMBOLS)
 
     return weaknesses
