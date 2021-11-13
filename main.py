@@ -7,12 +7,14 @@ parser.add_argument('--length', '-l', type=int, default=12,
                     help='The length of the password to generate.')
 parser.add_argument('--symbols', '-s', default=False, action='store_true',
                     help='Whether to place symbols in the password.')
+parser.add_argument('--numbers', '-n', default=False, action='store_true',
+                    help='Whether to place numbers in the password.')
 parser.add_argument('--show-weaknesses', '-w', default=False, action='store_true',
                     help='Whether to show weaknesses of the password.')
 
 args = parser.parse_args()
 
-password = generate_password(args.length, args.symbols)
+password = generate_password(args.length, args.symbols, args.numbers)
 print(password)
 
 if args.show_weaknesses:
