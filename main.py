@@ -3,13 +3,13 @@ from argparse import ArgumentParser
 from weaknesses import find_weaknesses
 
 parser = ArgumentParser(description='Generates passwords.')
-parser.add_argument('--length', '-l', type=int, default=12,
+parser.add_argument('--length', type=int, default=12,
                     help='The length of the password to generate.')
 parser.add_argument('--symbols', '-s', default=False, action='store_true',
                     help='Whether to place symbols in the password.')
 parser.add_argument('--upper', '-u', default=False, action='store_true',
                     help='Whether to use upper case letters in the password.')
-parser.add_argument('--lower', '-l', default=False, action='store_true',
+parser.add_argument('--lower', default=False, action='store_true',
                     help='Whether to use lower case letters in the password.')
 parser.add_argument('--numbers', '-n', default=False, action='store_true',
                     help='Whether to place numbers in the password.')
