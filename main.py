@@ -14,7 +14,7 @@ parser.add_argument('--show-weaknesses', '-w', default=False, action='store_true
 
 args = parser.parse_args()
 
-password = generate_password(args.length, args.symbols, args.numbers)
+password = generate_password(args.length, symbols=args.symbols, numbers=args.numbers)
 print(password)
 
 if args.show_weaknesses:
