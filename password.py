@@ -25,11 +25,11 @@ def generate_password(length: int = 8, upper_case: bool = True, lower_case: bool
                 password += choice(punctuation)
             last_time_character_type = 'symbol'
 
-    new_password = ''
-    password = list(password)
-    while password:
-        random_character = choice(password)
-        new_password += random_character
-        del password[password.index(random_character)]
+    password_characters_list = list(password)
+    password = ''
+    while password_characters_list:
+        random_character = choice(password_characters_list)
+        password += random_character
+        del password_characters_list[password_characters_list.index(random_character)]
 
-    return new_password
+    return password
