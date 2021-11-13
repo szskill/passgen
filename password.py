@@ -2,6 +2,7 @@ from string import ascii_lowercase, ascii_uppercase, punctuation, digits
 from random import choice
 
 
+def generate_password(length: int, symbols: bool = False, numbers: int = 12) -> str:
 def generate_password(length: int = 8, upper_case: bool = True, lower_case: bool = True,
                       numbers: bool = True, symbols: bool = True) -> str:
     password = ''
